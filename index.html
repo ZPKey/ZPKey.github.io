@@ -28,12 +28,12 @@
             yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
             
         var g = svg.append("g")
-            .attr("transform", "translate(" + 500 + "," + 100 + ")");
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
         // Step 5
         // Title
         svg.append('text')
-        .attr('x', width/2 + 100)
+        .attr('x', width/2 + 500)
         .attr('y', 100)
         .attr('text-anchor', 'middle')
         .style('font-family', 'Helvetica')
