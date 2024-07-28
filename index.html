@@ -24,11 +24,11 @@
             height = svg.attr("height") - margin //200
 
         // Step 4 
-        var xScale = d3.scaleLinear().domain([0, 500]).range([0, width]),
+        var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
             yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
             
         var g = svg.append("g")
-            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+            .attr("transform", "translate(" + 500 + "," + 100 + ")");
 
         // Step 5
         // Title
