@@ -26,8 +26,8 @@
 					height = svg.attr("height") - margin //200
 
 				// Step 4 
-				var xScale = d3.scaleLinear().domain([0, 122]).range([0, width]),
-					yScale = d3.scaleLinear().domain([0, 12]).range([height, 0]);
+				var xScale = d3.scaleLinear().domain([0, 12]).range([0, width]),
+					yScale = d3.scaleLinear().domain([0, 122]).range([height, 0]);
 					
 				var g = svg.append("g")
 					.attr("transform", "translate(" + 100 + "," + 100 + ")");
@@ -73,8 +73,8 @@
 				.data(data)
 				.enter()
 				.append("circle")
-					.attr("cy", function (d) { return yScale(d.EngineCylinders); } )
-					.attr("cx", function (d) { return xScale((d.AverageHighwayMPG * 1 + d.AverageCityMPG*1)/2); } )
+					.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
+					.attr("cy", function (d) { return yScale((d.AverageHighwayMPG * 1 + d.AverageCityMPG*1)/2); } )
 					.attr("r", 4)
 					.attr("transform", "translate(" + 100 + "," + 100 + ")")
 					.style("fill", "#69b3a2")
