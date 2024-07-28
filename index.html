@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-
+<!doctype html>
+<html>
 <head>
-  <!-- Load d3.js -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!--Step 2-->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
-
 <body>
+<!--Step 2-->
 <svg width="500" height="400"></svg>
 <script>
-        d3.csv("https://flunky.github.io/cars2017.csv").then(function (data_given) {
-		var dataset1 = [
+        // Step 1
+        var dataset1 = [
         [90, 20], [20, 100], [66, 44],
         [53, 80], [24, 182], [80, 72],
         [10, 76], [33, 150], [100, 15]
@@ -70,12 +69,12 @@
         .data(dataset1)
         .enter()
         .append("circle")
-        .attr("cx", function (d) { return xScale(d.EngineCylinders); } )
-        .attr("cy", function (d) { return yScale(d.AverageCityMPG); } )
-        .attr("r", 4)
+        .attr("cx", function (d) { return xScale(d[0]); } )
+        .attr("cy", function (d) { return yScale(d[1]); } )
+        .attr("r", 2)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .style("fill", "#CC0000");
-		)}
   
 </script>
 </body>
+</html>
