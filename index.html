@@ -25,6 +25,7 @@
         // Step 4 
         var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
             yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
+			cScale = d3.scaleLinear().domain([0, 100]).range([blue, orange])
             
         var g = svg.append("g")
             .attr("transform", "translate(" + 100 + "," + 100 + ")");
@@ -74,7 +75,7 @@
         .attr("cy", function (d) { return yScale(d[1]); } )
         .attr("r", 4)
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
-        .style("fill", "#CC0000");
+        .style("fill", function (d) { return cScale(d[0]); } );
   
 </script>
 	
