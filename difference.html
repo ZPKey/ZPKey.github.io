@@ -6,19 +6,15 @@
 	<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 </head>
 <body>
+<h1>An Analysis of the Impact Engine Cylinders has on MPG</h1>
+<p>This website is dedicated to exploring the impact that engine cylinders have on </p>
 <!--Step 2-->
-<svg width="1000" height="800" id="example" ></svg>
+<svg width="1400" height="600" id = "example"></svg>
 <script>
         d3.csv("https://flunky.github.io/cars2017.csv").then(function (data) {
-		
-			var dataset1 = [
-			[90, 20], [20, 100], [66, 44],
-			[53, 80], [24, 182], [80, 72],
-			[10, 76], [33, 150], [100, 15]
-			];
 
 			// Step 3
-			var svg = d3.select("#example"),
+			var svg = d3.select("svg"),
 				margin = 200,
 				width = svg.attr("width") - margin, //300
 				height = svg.attr("height") - margin //200
@@ -38,16 +34,16 @@
 			.attr('text-anchor', 'middle')
 			.style('font-family', 'Helvetica')
 			.style('font-size', 20)
-			.text('Scatter Plot');
+			.text('HighwayMPG vs Engine Cylinders');
 			
 			// X label
 			svg.append('text')
 			.attr('x', width/2 + 100)
-			.attr('y', height - 15 + 150)
+			.attr('y', height - 15 + 200)
 			.attr('text-anchor', 'middle')
 			.style('font-family', 'Helvetica')
-			.style('font-size', 24)
-			.text('Independant');
+			.style('font-size', "20px")
+			.text('Number of Engine Cylinders');
 			
 			// Y label
 			svg.append('text')
@@ -55,7 +51,7 @@
 			.attr('transform', 'translate(60,' + height + ')rotate(-90)')
 			.style('font-family', 'Helvetica')
 			.style('font-size', 24)
-			.text('Dependant');
+			.text('AverageHighwayMPG');
 
 			// Step 6
 			g.append("g")
@@ -73,22 +69,21 @@
 			.enter()
 			.append("circle")
 			.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
-			.attr("cy", function (d) { return yScale(d.AverageHighwayMPG * 1 - d.AverageCityMPG * 1 ); } )
+			.attr("cy", function (d) { return yScale((d.AverageHighwayMPG*1 - AverageCityMPG*1)/2); } )
 			.attr("r", 4)
 			.attr("transform", "translate(" + 100 + "," + 100 + ")")
 			.style("fill", "#CC0000")
 			
-						// Features of the annotation
 			const annotations = [
 			  {
 				note: {
-				  label: "Here is the annotation label",
-				  title: "Annotation title"
+				  label: "Similarly to City MPG, Highway MPG also trends down as cylinder numbers increase.",
+				  title: "A (Reoccurring) Downward Trend"
 				},
 				x: 500,
 				y: 100,
 				dy: 100,
-				dx: 100
+				dx: 420
 			  }
 			]
 
@@ -98,15 +93,15 @@
 			d3.select("#example")
 			  .append("g")
 			  .call(makeAnnotations)
-			
-			
 		})
-
-
-
+  
 </script>
-<a href="yeet.html">
-    <button>Click Me!</button>
+<a href="difference.html">
+    <button>Next Page</button>
 </a>
+<a href="city.html">
+    <button>Previous Page</button>
+</a>
+
 </body>
 </html>
