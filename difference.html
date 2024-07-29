@@ -6,7 +6,7 @@
 </head>
 <body>
 <!--Step 2-->
-<svg width="1000" height="800" id="example1"></svg>
+<svg width="1000" height="800" ></svg>
 <script>
         d3.csv("https://flunky.github.io/cars2017.csv").then(function (data) {
 		
@@ -17,7 +17,7 @@
 			];
 
 			// Step 3
-			var svg = d3.select("example1"),
+			var svg = d3.select("svg"),
 				margin = 200,
 				width = svg.attr("width") - margin, //300
 				height = svg.attr("height") - margin //200
@@ -80,7 +80,6 @@
 
 
 
-  
 </script>
 <a href="yeet.html">
     <button>Click Me!</button>
