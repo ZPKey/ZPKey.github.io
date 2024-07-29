@@ -102,24 +102,27 @@
 			  .append("g")
 			  .call(makeAnnotations)
 			
+			function update(setting) {
+				if (setting === "AverageHighwayMPG") {
+					svg.selectAll("circle")
+						.data(filtered)
+						.transition()
+						.duration(1000)
+						.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
+						.attr("cy", function (d) { return yScale(d.AverageHighwayMPG); } )
+				} else if (setting === "AverageCityMPG") {
+					scene1.selectAll("circle")
+						.data(filtered)
+						.transition()
+						.duration(2000)
+						.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
+						.attr("cy", function (d) { return yScale(d.AverageCityMPG); } )
+				}
+			}
+			
 			
 		})
-		function update(setting) {
-			if (setting === "AverageHighwayMPG") {
-				svg.selectAll("circle")
-					.data(data)
-					.transition()
-					.duration(1000)
-					.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
-					.attr("cy", function (d) { return yScale(d.AverageHighwayMPG); } )
-			} else if (setting === "AverageCityMPG") {
-				scene1.selectAll("circle")
-					.transition()
-					.duration(2000)
-					.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
-					.attr("cy", function (d) { return yScale(d.AverageCityMPG); } )
-			}
-		}
+		
 
 
 
