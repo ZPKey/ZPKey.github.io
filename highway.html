@@ -3,18 +3,15 @@
 <head>
     <!--Step 2-->
     <script src="https://d3js.org/d3.v6.min.js"></script>
+	<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 </head>
 <body>
+<h1>An Analysis of the Impact Engine Cylinders has on MPG</h1>
+<p>This website is dedicated to exploring the impact that engine cylinders have on </p>
 <!--Step 2-->
-<svg width="1000" height="800"></svg>
+<svg width="1400" height="600" id = "example"></svg>
 <script>
         d3.csv("https://flunky.github.io/cars2017.csv").then(function (data) {
-		
-			var dataset1 = [
-			[90, 20], [20, 100], [66, 44],
-			[53, 80], [24, 182], [80, 72],
-			[10, 76], [33, 150], [100, 15]
-			];
 
 			// Step 3
 			var svg = d3.select("svg"),
@@ -37,16 +34,16 @@
 			.attr('text-anchor', 'middle')
 			.style('font-family', 'Helvetica')
 			.style('font-size', 20)
-			.text('Scatter Plot');
+			.text('CityMPG vs Engine Cylinders');
 			
 			// X label
 			svg.append('text')
 			.attr('x', width/2 + 100)
-			.attr('y', height - 15 + 150)
+			.attr('y', height - 15 + 200)
 			.attr('text-anchor', 'middle')
 			.style('font-family', 'Helvetica')
-			.style('font-size', 24)
-			.text('Independant');
+			.style('font-size', "20px")
+			.text('Number of Engine Cylinders');
 			
 			// Y label
 			svg.append('text')
@@ -54,7 +51,7 @@
 			.attr('transform', 'translate(60,' + height + ')rotate(-90)')
 			.style('font-family', 'Helvetica')
 			.style('font-size', 24)
-			.text('Dependant');
+			.text('AverageCityMPG');
 
 			// Step 6
 			g.append("g")
@@ -72,15 +69,39 @@
 			.enter()
 			.append("circle")
 			.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
-			.attr("cy", function (d) { return yScale(d.AverageHighwayMPG); } )
+			.attr("cy", function (d) { return yScale(d.AverageCityMPG); } )
 			.attr("r", 4)
 			.attr("transform", "translate(" + 100 + "," + 100 + ")")
 			.style("fill", "#CC0000")
+			
+			const annotations = [
+			  {
+				note: {
+				  label: "Note that as the number of engine cylinders increase, the AverageCityMPG decreases.",
+				  title: "A Downward Trend"
+				},
+				x: 500,
+				y: 100,
+				dy: 100,
+				dx: 420
+			  }
+			]
+
+			// Add annotation to the chart
+			const makeAnnotations = d3.annotation()
+			  .annotations(annotations)
+			d3.select("#example")
+			  .append("g")
+			  .call(makeAnnotations)
 		})
   
 </script>
-<a href="yeet.html">
-    <button>Click Me!</button>
+<a href="highway.html">
+    <button>Next Page</button>
 </a>
+<a href="index.html">
+    <button>Previous Page</button>
+</a>
+
 </body>
 </html>
