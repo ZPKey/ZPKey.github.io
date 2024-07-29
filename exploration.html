@@ -11,7 +11,7 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <body>
-<p> big time </p>
+<p> big time winner? </p>
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -55,7 +55,7 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
   filtered = data.filter(function(d) { return d.EngineCylinders > 0});
   svg.append('g')
     .selectAll("dot")
-    .data(data)
+    .data(filtered)
     .enter()
     .append("circle")
       .attr("cx", function (d) { return x(d.EngineCylinders); } )
@@ -70,7 +70,7 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
 
     // Update chart
     svg.selectAll("circle")
-       .data(data)
+       .data(filtered)
        .transition()
        .duration(1000)
        .attr("cx", function (d) { return x(d.EngineCylinders); } )
@@ -81,7 +81,7 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
 
     // Update chart
     svg.selectAll("circle")
-       .data(data)
+       .data(filtered)
        .transition()
        .duration(1000)
        .attr("cx", function (d) { return x(d.EngineCylinders); } )
@@ -92,7 +92,7 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
 
     // Update chart
     svg.selectAll("circle")
-       .data(data)
+       .data(filtered)
        .transition()
        .duration(1000)
        .attr("cx", function (d) { return x(d.EngineCylinders); } )
