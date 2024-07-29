@@ -4,7 +4,9 @@
 
 <!-- Add a radio button -->
 <input type="number" id="buttonXlim" value=9>
-<button type = "button" id="highway" onclick="updatePlot()">Average Highway MPG</button>
+<div>
+	<button type = "button" id="highway" onclick="updatePlot()">Average Highway MPG</button>
+</div>
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -84,6 +86,7 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
 
   // Add an event listener to the button created in the html part
   d3.select("#buttonXlim").on("input", updatePlot )
+  d3.select("#highway").on("click", updatePlot )
 
 })
 
