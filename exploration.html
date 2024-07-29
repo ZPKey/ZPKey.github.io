@@ -110,7 +110,7 @@
 						.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
 						.attr("cy", function (d) { return yScale(d.AverageHighwayMPG); } )
 				} else if (setting === "AverageCityMPG") {
-					scene1.selectAll("circle")
+					svg.selectAll("circle")
 						.data(filtered)
 						.transition()
 						.duration(2000)
