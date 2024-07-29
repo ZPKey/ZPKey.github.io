@@ -11,7 +11,8 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <body>
-<p> big time winner? </p>
+<p> That concludes this narrative visualization. Feel free to use the buttons at the top of the screen to swap between all 3 graphs shown
+in order to draw your own conclusions regarding the data.</p>
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -61,7 +62,7 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
       .attr("cx", function (d) { return x(d.EngineCylinders); } )
       .attr("cy", function (d) { return y(d.AverageHighwayMPG); } )
       .attr("r", 5)
-      .style("fill", "#69b3a2" )
+      .style("fill", "#CC0000" )
 
 
   // A function that update the plot for a given xlim value
