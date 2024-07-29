@@ -50,6 +50,14 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
   svg.append("g")
     .call(d3.axisLeft(y));
 	
+	svg.append('text')
+			.attr('x', width/2 + 100)
+			.attr('y', height - 15 + 200)
+			.attr('text-anchor', 'middle')
+			.style('font-family', 'Helvetica')
+			.style('font-size', "20px")
+			.text('Number of Engine Cylinders');
+	
 	
 
   // Add dots
