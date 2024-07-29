@@ -71,13 +71,6 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
   // A function that update the plot for a given xlim value
   function updatePlot() {
 
-    // Get the value of the button
-    xlim = this.value
-
-    // Update X axis
-    x.domain([3,xlim])
-    xAxis.transition().duration(1000).call(d3.axisBottom(x))
-
     // Update chart
     svg.selectAll("circle")
        .data(data)
