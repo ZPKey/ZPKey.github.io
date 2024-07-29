@@ -9,7 +9,7 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <body>
-<p> big testing hours </p>
+<p> big </p>
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -46,6 +46,14 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
+	
+	svg.append('text')
+	.attr('x', width/2 + 100)
+	.attr('y', 100)
+	.attr('text-anchor', 'middle')
+	.style('font-family', 'Helvetica')
+	.style('font-size', 20)
+	.text('The Difference Between City MPG and HighwayMPG');
 
   // Add dots
   filtered = data.filter(function(d) { return d.EngineCylinders > 0});
@@ -75,8 +83,8 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
        .data(data)
        .transition()
        .duration(1000)
-       .attr("cx", function (d) { return x(d.Sepal_Length); } )
-       .attr("cy", function (d) { return y(d.Petal_Length); } )
+       .attr("cx", function (d) { return x(d.EngineCylinders); } )
+       .attr("cy", function (d) { return y(d.AverageHighwayMPG); } )
   }
 
   // Add an event listener to the button created in the html part
