@@ -4,6 +4,7 @@
 <div>
 	<button type = "button" id="highway" onclick="updatePlot()">Average Highway MPG</button>
 	<button type = "button" id="city" onclick="updatePlot2()">Average City MPG</button>
+	<button type = "button" id="difference" onclick="updatePlot2()">Difference Btw Highway and City</button>
 </div>
 
 <!-- Load d3.js -->
@@ -92,11 +93,23 @@ d3.csv("https://flunky.github.io/cars2017.csv", function(data) {
        .attr("cx", function (d) { return x(d.EngineCylinders); } )
        .attr("cy", function (d) { return y(d.AverageCityMPG); } )
   }
+  function updatePlot3() {
+
+
+    // Update chart
+    svg.selectAll("circle")
+       .data(data)
+       .transition()
+       .duration(1000)
+       .attr("cx", function (d) { return x(d.EngineCylinders); } )
+       .attr("cy", function (d) { return y(d.AverageHighwayMPG * 1 - AverageCityMPG * 1); } )
+  }
 
   // Add an event listener to the button created in the html part
   d3.select("#buttonXlim").on("input", updatePlot )
   d3.select("#highway").on("click", updatePlot )
   d3.select("#city").on("click", updatePlot2 )
+  d3.select("#difference").on("click", updatePlot3 )
 
 })
 
