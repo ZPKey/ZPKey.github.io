@@ -65,9 +65,10 @@
 			 .call(d3.axisLeft(yScale));
 			
 			// Step 7
+			filtered = data.filter(function(d) { return d.EngineCylinders > 0});
 			svg.append('g')
 			.selectAll("dot")
-			.data(data)
+			.data(filtered)
 			.enter()
 			.append("circle")
 			.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
