@@ -36,11 +36,11 @@
 			// Title
 			svg.append('text')
 			.attr('x', width/2 + 100)
-			.attr('y', 80)
+			.attr('y', 100)
 			.attr('text-anchor', 'middle')
 			.style('font-family', 'Helvetica')
-			.style('font-size', 36px)
-			.text('CityMPG vs Engine Cylinders');
+			.style('font-size', 20)
+			.text('Scatter Plot');
 			
 			// X label
 			svg.append('text')
@@ -54,7 +54,7 @@
 			// Y label
 			svg.append('text')
 			.attr('text-anchor', 'middle')
-			.attr('transform', 'translate(150,' + height + ')rotate(-90)')
+			.attr('transform', 'translate(60,' + height + ')rotate(-90)')
 			.style('font-family', 'Helvetica')
 			.style('font-size', 24)
 			.text('AverageCityMPG');
