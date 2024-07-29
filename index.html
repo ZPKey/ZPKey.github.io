@@ -65,8 +65,8 @@
 			 .call(d3.axisLeft(yScale));
 			
 			// Step 7
-			svg.append('g')
 			filtered = data.filter(function(d) { return d.EngineCylinders > 0});
+			svg.append('g')
 			.selectAll("dot")
 			.data(filtered)
 			.enter()
