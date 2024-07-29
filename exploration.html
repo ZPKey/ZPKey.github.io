@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <!--Step 2-->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+	<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+</head>
+<body>
+<!--Step 2-->
+<svg width="1000" height="800" id="example" ></svg>
+<script>
+        d3.csv("https://flunky.github.io/cars2017.csv").then(function (data) {
+		
+			var dataset1 = [
+			[90, 20], [20, 100], [66, 44],
+			[53, 80], [24, 182], [80, 72],
+			[10, 76], [33, 150], [100, 15]
+			];
+
+			// Step 3
+			var svg = d3.select("#example"),
+				margin = 200,
+				width = svg.attr("width") - margin, //300
+				height = svg.attr("height") - margin //200
+
+			// Step 4 
+			var xScale = d3.scaleLinear().domain([0, 12]).range([0, width]),
+				yScale = d3.scaleLinear().domain([-10, 20]).range([height, 0]);
+				
+			var g = svg.append("g")
+				.attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+			// Step 5
+			// Title
+			svg.append('text')
+			.attr('x', width/2 + 100)
+			.attr('y', 100)
+			.attr('text-anchor', 'middle')
+			.style('font-family', 'Helvetica')
+			.style('font-size', 20)
+			.text('Scatter Plot');
+			
+			// X label
+			svg.append('text')
+			.attr('x', width/2 + 100)
+			.attr('y', height - 15 + 150)
+			.attr('text-anchor', 'middle')
+			.style('font-family', 'Helvetica')
+			.style('font-size', 24)
+			.text('Independant');
+			
+			// Y label
+			svg.append('text')
+			.attr('text-anchor', 'middle')
+			.attr('transform', 'translate(60,' + height + ')rotate(-90)')
+			.style('font-family', 'Helvetica')
+			.style('font-size', 24)
+			.text('Dependant');
+
+			// Step 6
+			g.append("g")
+			 .attr("transform", "translate(0," + height + ")")
+			 .call(d3.axisBottom(xScale));
+			
+			g.append("g")
+			 .call(d3.axisLeft(yScale));
+			
+			// Step 7
+			filtered = data.filter(function(d) { return d.EngineCylinders > 0});
+			svg.append('g')
+			.selectAll("dot")
+			.data(filtered)
+			.enter()
+			.append("circle")
+			.attr("cx", function (d) { return xScale(d.EngineCylinders); } )
+			.attr("cy", function (d) { return yScale(d.AverageHighwayMPG * 1 - d.AverageCityMPG * 1 ); } )
+			.attr("r", 4)
+			.attr("transform", "translate(" + 100 + "," + 100 + ")")
+			.style("fill", "#CC0000")
+			
+						// Features of the annotation
+			const annotations = [
+			  {
+				note: {
+				  label: "Here is the annotation label",
+				  title: "Annotation title"
+				},
+				x: 500,
+				y: 100,
+				dy: 100,
+				dx: 100
+			  }
+			]
+
+			// Add annotation to the chart
+			const makeAnnotations = d3.annotation()
+			  .annotations(annotations)
+			d3.select("#example")
+			  .append("g")
+			  .call(makeAnnotations)
+			
+			
+		})
+
+
+
+</script>
+<a href="yeet.html">
+    <button>Click Me!</button>
+</a>
+</body>
+</html>
